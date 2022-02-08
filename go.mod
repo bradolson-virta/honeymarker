@@ -1,4 +1,4 @@
-module github.com/honeycombio/honeymarker
+module github.com/bradolson-virta/honeymarker
 
 go 1.17
 
