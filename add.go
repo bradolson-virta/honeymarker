@@ -46,6 +46,7 @@ func (a *AddCommand) Execute(args []string) error {
 	resp, err := client.Do(req)
 	fmt.Println("client req made")
 	if err != nil {
+		fmt.Println(err)
 		return err
 	}
 	defer resp.Body.Close()
