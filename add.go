@@ -56,6 +56,7 @@ func (a *AddCommand) Execute(args []string) error {
 		errMsg := fmt.Sprintf("Failed with %d and message: %s", resp.StatusCode, body)
 		return errors.New(errMsg)
 	}
+	fmt.Println("status: ", resp.StatusCode)
 	fmt.Println(string(body))
 	return nil
 
