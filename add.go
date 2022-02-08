@@ -44,19 +44,22 @@ func (a *AddCommand) Execute(args []string) error {
 		req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", options.AuthorizationHeader))
 	}
 	resp, err := client.Do(req)
+	fmt.Println("client req made")
 	if err != nil {
 		return err
 	}
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
+	fmt.Println("body res read")
 	if err != nil {
 		return err
 	}
+	fmt.Println(resp.StatusCode)
 	if resp.StatusCode < 200 || resp.StatusCode >= 300 {
 		errMsg := fmt.Sprintf("Failed with %d and message: %s", resp.StatusCode, body)
 		return errors.New(errMsg)
 	}
-	fmt.Println("status: ", resp.StatusCode)
+	fmt.Println("status 2xx")
 	fmt.Println(string(body))
 	return nil
 
